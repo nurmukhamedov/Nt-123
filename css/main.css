@@ -1,0 +1,55 @@
+body {
+	background-color: aqua;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dark {
+	background-color: black;
+	transition: 0.5s ease;
+}
+
+.title {
+	color: blue;
+	font-size: 50px;
+}
+
+.title_extra {
+	color: red;
+}
+
+.dark .title {
+	color: white;
+}
+
+.dark .btn {
+	background-color: white;
+	color: black;
+}
+
+.main {
+	max-width: 900px;
+	background-color: #fff;
+	padding: 25px;
+	position: relative;
+}
+
+.modal {
+	position: absolute;
+	top: -50px;
+	left: 22%;
+	background-color: #fff;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 25px;
+	opacity: 0;
+	z-index: -1;
+	transition: 0.5s ease;
+}
+
+.modal-extra {
+	opacity: 1;
+	z-index: 2;
+}
