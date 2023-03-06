@@ -1,3 +1,55 @@
 form input.danger {
     border: 1px solid red;
 }
+/* Style the form container */
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+/* Style the form inputs */
+.form__name,
+.form__relation,
+.form__number,
+.form__password,
+.confirm__password {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the form submit button */
+.form__button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+/* Style the form error messages */
+.form__span {
+    color: red;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the form titles */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.success {
+    border: 1px solid green;
+}
