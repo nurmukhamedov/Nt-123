@@ -6,6 +6,7 @@
 
 
 
+
 //     const walkingTime = (distance / walkingSpeed).toFixed(2);
 //     const bikeTime = (distance / bikeSpeed).toFixed(2);
 //     const carTime = (distance / carSpeed).toFixed(2);
@@ -88,40 +89,127 @@
 // console.log(student2.greeting());
 
 
-const form = document.querySelector('.form'),
-    name = document.querySelector('.name'),
-    relation = document.querySelector('.relation'),
-    number = document.querySelector('.number'),
-    btn = document.querySelector('.btn'),
-    box = document.querySelector('.box');
+// const form = document.querySelector('.form'),
+//     name = document.querySelector('.name'),
+//     relation = document.querySelector('.relation'),
+//     number = document.querySelector('.number'),
+//     btn = document.querySelector('.btn'),
+//     box = document.querySelector('.box');
 
+
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault();
+
+//     const contact = document.createElement('div');
+//     contact.classList.add('contact');
+
+//     nameSpan = document.createElement('span');
+//     nameSpan.textContent = name.value;
+//     contact.appendChild(nameSpan);
+
+//     relateSpan = document.createElement('span');
+//     relateSpan.textContent = relation.value;
+//     contact.appendChild(relateSpan);
+
+//     numberSpan = document.createElement('span');
+//     numberSpan.textContent = number.value;
+//     contact.appendChild(numberSpan);
+
+//     deleteButton = document.createElement('button');
+//     deleteButton.textContent = 'Delete';
+//     contact.appendChild(deleteButton);
+
+//     box.appendChild(contact);
+
+//     deleteButton.addEventListener('click', () => {
+//         box.removeChild(contact);
+//     })
+
+//     form.reset();
+// });
+
+
+// const negativeNumbers = [1, 2, 3, - 3, -5, 9.25, -5];
+// const positiveNumebrs = [];
+
+// const compileToPositive = function (number) {
+
+//     for (let i = 0; i < number.length; i++) {
+
+//         let element = number[i];
+
+//         if (element < 0) {
+//             element = element * -1;
+//         }
+
+//         positiveNumebrs.push(Math.round(element));
+//     }
+//     return positiveNumebrs;
+
+// }
+
+// console.log(compileToPositive(negativeNumbers));
+
+// let i = 0;
+
+// while (i < 50) {
+//     console.log('Salom dunyo');
+
+//     i++;
+// }
+
+
+// let dice = Math.round(Math.random() * 10 + 1);
+
+
+// while (dice !== 9) {
+//     dice = Math.round(Math.random() * 10 + 1);
+//     if (dice === 9) {
+//         console.log('Siz yutdingiz 9 chiqdi');
+//     } else {
+//         console.log(`Boshqa son ${dice} chiqdi`);
+//     };
+// }
+
+
+
+
+
+const form = document.querySelector('.form');
+const formInput = document.querySelector('.form__input');
+const formButton = document.querySelector('.form__button');
+const activities = document.querySelector('.activities');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const contact = document.createElement('div');
-    contact.classList.add('contact');
+    if (!formInput.value) {
+    } else {
+        const divBox = document.createElement('div');
+        divBox.classList.add('form__box');
+        const list = document.createElement('p');
+        list.classList.add('activity__list');
+        list.textContent = formInput.value;
+        divBox.appendChild(list);
 
-    nameSpan = document.createElement('span');
-    nameSpan.textContent = name.value;
-    contact.appendChild(nameSpan);
+        const removeButton = document.createElement('button');
+        removeButton.classList.add('activity__remove');
 
-    relateSpan = document.createElement('span');
-    relateSpan.textContent = relation.value;
-    contact.appendChild(relateSpan);
+        const removeImg = document.createElement('img');
+        removeImg.src = './images/delete.png';
 
-    numberSpan = document.createElement('span');
-    numberSpan.textContent = number.value;
-    contact.appendChild(numberSpan);
+        removeButton.appendChild(removeImg);
 
 
-    box.appendChild(contact);
+        divBox.appendChild(removeButton);
 
-});
+        activities.appendChild(divBox);
 
-const deleteBtn = document.querySelector('.delete');
-const text = document.querySelector('.text');
+        removeButton.addEventListener('click', () => {
+            activities.removeChild(divBox);
+        });
 
-deleteBtn.addEventListener('click', () => {
-    box.removeChild(text)
+        form.reset();
+    }
+
 })

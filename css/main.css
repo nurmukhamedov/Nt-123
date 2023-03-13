@@ -1,0 +1,66 @@
+/* Style for form section */
+.form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.form__input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px 0 0 5px;
+}
+
+.form__button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Style for activities section */
+.activities {
+    margin-bottom: 10px;
+
+}
+
+.form__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.activity__list {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.activity__remove {
+    background-color: #f44336;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.activity__remove img {
+    width: 16px;
+    height: 16px;
+}
+
+.redBody {
+    background-color: red;
+}
