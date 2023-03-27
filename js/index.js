@@ -1,152 +1,139 @@
-// const arr = [1, 2, 3, 4, 5, 6];
+// const students = [
+//     { id: 1, name: 'Alice', grade: 'A' },
+//     { id: 2, name: 'Bob', grade: 'C' },
+//     { id: 3, name: 'Charlie', grade: 'B' },
+//     { id: 4, name: 'Dave', grade: 'A' },
+//     { id: 5, name: 'Eve', grade: 'B' },
+// ];
 
-// const checkNumber = function (numbers, target) {
-//     const checkNum = numbers.indexOf(target);
+// const input = document.querySelector('.input'),
+//     btn = document.querySelector('.btn'),
+//     box = document.querySelector('.studentInfo');
 
-//     if (checkNum === - 1) {
-//         return []
+// btn.addEventListener('click', () => {
+//     const id = input.value;
+
+//     const checkStudent = students.find((student) => student.id == id);
+//     if (checkStudent) {
+//         box.innerHTML = `<h2> Name:${checkStudent.name} Grade:${checkStudent.grade} Id: ${checkStudent.id} </h2>`
 //     } else {
-//         return [checkNum]
+//         box.innerHTML = `<h2>Bunday id nomli o'quvchi yo'q</h2>`
 //     }
-// }
-// console.log(checkNumber(arr, 5));
-// console.log(checkNumber(arr, 4));
-// console.log(checkNumber(arr, 8));
-// console.log(checkNumber(arr, 2));
 
-let people = [
-    { name: "Alice", age: 25 },
-    { name: "Bob", age: 30 },
-    { name: "Charlie", age: 35 }
-];
+// })
 
-// const checkAge = function (allPeople, age) {
-//     return allPeople.age >= age
-// }
 
-// const checkPeople = people.every((person) => checkAge(person, 20));
+// const myList = document.querySelectorAll('.list li');
+// console.log(myList);
 
-// if (checkPeople) {
-//     console.log('Katta bola');
-// } else {
-//     console.log('Yosh');
-// }
+// myList.forEach((list) => {
+//     list.addEventListener('click', () => {
+//         console.log(`Clicked ${list.textContent}`);
+//     });
+// })
 
-// const checkAge = function (allPeople, userAge) {
 
-//     const checkPeople = allPeople.every((person) => person.age >= userAge);
+// console.log(window);
 
-//     if (checkPeople) {
-//         return 'Katta bola'
-//     } else {
-//         return 'Yosh'
-//     }
+// localStorage.setItem('1', 'Muhammadrasul');
+// localStorage.setItem('2', 'Ahmadjon');
+
+// const userName = localStorage.getItem('1');
+
+
+// localStorage.clear();
+
+// const person = {
+//     name: 'Muhammadrasul',
+//     age: 23
 // }
 
-// console.log(checkAge(people, 30));
+// const jsonFormat = JSON.stringify(person);
 
-// const myAge = function (birthYear) {
-//     return 2023 - birthYear;
-// }
-// console.log(myAge(2000));
+// console.log(jsonFormat);
 
-// const sayHello = () => console.log('Hello World');
+// const objFormat = JSON.parse(jsonFormat);
+
+// console.log(objFormat);
+
+// console.log(person.hasOwnProperty('name'));
+// const second = document.querySelector('.second');
+// console.log(second);
+
+// const first = second.previousElementSibling;
+// const third = second.nextElementSibling;
+// const four = third.nextElementSibling;
+// console.log(four);
+
+// const container = first.parentNode;
+
+// console.log(container);
 
 
 // const btn = document.querySelector('.btn');
 
-// btn.addEventListener('click', () => {
-//     console.log('Hello World');
-// });
+// const middle = btn.closest('body');
+
+// console.log(middle);
+
+const form = document.querySelector('.form');
+
+const nameInput = document.querySelector('#name');
+const price = document.querySelector('#price');
+const itemId = document.querySelector('#itemId');
+const itemList = document.querySelector('.itemList');
 
 
-// const numbers = [1, 2, 3, 4, 5];
+form.addEventListener('submit', (e) => {
 
-// numbers.forEach((num, index, array) => {
-//     array[index] = num * 2;
-// });
+    e.preventDefault();
 
-// console.log(numbers);
-
-// const newNumbers = numbers.map((number) => {
-//     return number * 2
-// });
-
-
-// console.log(newNumbers);
-
-// const numbers = [5, 8, 1, 2, 6, 7, 10];
-
-// const names = ['David', 'Jack', 'Bob', 'Anhel'].sort();
-
-
-// console.log(names);
-
-const numbers = [-5, -1, 1, 1, 2, 5, -4, 3, 4, 5, 6, 7, 9, 8];
-
-const array = [1, 2, 3, 4, 5]
-
-// const newNumbers = numbers.filter((num) => num < 2);
-
-// console.log(newNumbers);
-
-
-// const totalNumber = array.reduce((acc, element) => {
-//     return acc + element
-// });
-
-// console.log(totalNumber);
-
-const cars = [
-    {
-        img: 'https://motor.ru/imgs/2022/03/03/10/5274800/6ddcf7e5e0a907893873e987c81ec9d1fedcc76e.jpg',
-        car: 'BMW',
-        status: 'new',
-        quantity: 8
-    },
-    {
-        img: 'https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/home/720x720_the-new-bmw-i7-xdriv.jpg.grp-transform/small/720x720_the-new-bmw-i7-xdriv.jpg',
-        car: 'BMW',
-        status: 'old',
-        quantity: 12
-    },
-    {
-        img: 'https://images.drive.com.au/driveau/image/upload/c_fill,h_675,w_1200/q_auto:eco/f_auto/v1/cms/uploads/ggutkfdonramc5akyims',
-        car: 'Mercedes Benz',
-        status: 'new',
-        quantity: 2
-    },
-    {
-        img: 'https://www.investing.com/academy/wp-content/uploads/2022/08/tesla-statistics.jpg',
-        car: 'Tesla',
-        status: 'new',
-        quantity: 15
-    },
-    {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png',
-        car: 'Toyota',
-        status: 'old',
-        quantity: 19
+    if (!nameInput.value && !price.value) {
+        alert('Malumot kiriting')
     }
-];
 
-const row = document.querySelector('.row');
+    if (itemId.value) {
+        item = JSON.parse(localStorage.getItem(itemId.value));
+        item.name = nameInput.value
+        item.price = price.value
+    } else {
+        item = {
+            name: nameInput.value,
+            price: price.value
+        }
+        itemId.value = `item ${Date.now()}`
+    }
 
-const newElements = cars.map((element) => {
-    return `
-     <div class="col-lg-4">
-     <div class="card" style="width: 18rem;">
-         <img src='${element.img}'
-             class="card-img-top" alt="BMW">
-         <div class="card-body">
-         <h2>${element.car}</h2>
-             <h5 class="card-title">Status: ${element.status}</h5>
-             <p>Quantity: ${element.quantity}</p>
-         </div>
-     </div>
- </div>
-     `
-})
-console.log(newElements.join(''));
+    localStorage.setItem(itemId.value, JSON.stringify(item));
 
-row.innerHTML = newElements.join('');
+    form.reset();
+
+    renderList();
+});
+
+function renderList() {
+    itemList.innerHTML = '';
+
+    for (const key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+
+            const item = JSON.parse(localStorage.getItem(key));
+            const li = document.createElement('li');
+
+            li.innerHTML = `<span>${item.name}</span> <span>$${item.price}</span>`
+            itemList.appendChild(li);
+
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            li.appendChild(editBtn);
+
+            editBtn.addEventListener('click', () => {
+                nameInput.value = item.name;
+                price.value = item.price;
+                itemId.value = key;
+            })
+        }
+    }
+}
+
+renderList();
