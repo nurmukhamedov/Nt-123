@@ -1,152 +1,143 @@
-// const arr = [1, 2, 3, 4, 5, 6];
 
-// const checkNumber = function (numbers, target) {
-//     const checkNum = numbers.indexOf(target);
+// const form = document.querySelector('.form');
 
-//     if (checkNum === - 1) {
-//         return []
-//     } else {
-//         return [checkNum]
+// const nameInput = document.querySelector('#name');
+// const price = document.querySelector('#price');
+// const itemId = document.querySelector('#itemId');
+// const itemList = document.querySelector('.itemList');
+
+
+// form.addEventListener('submit', (e) => {
+
+//     e.preventDefault();
+
+//     if (!nameInput.value && !price.value) {
+//         alert('Malumot kiriting')
 //     }
-// }
-// console.log(checkNumber(arr, 5));
-// console.log(checkNumber(arr, 4));
-// console.log(checkNumber(arr, 8));
-// console.log(checkNumber(arr, 2));
 
-let people = [
-    { name: "Alice", age: 25 },
-    { name: "Bob", age: 30 },
-    { name: "Charlie", age: 35 }
-];
-
-// const checkAge = function (allPeople, age) {
-//     return allPeople.age >= age
-// }
-
-// const checkPeople = people.every((person) => checkAge(person, 20));
-
-// if (checkPeople) {
-//     console.log('Katta bola');
-// } else {
-//     console.log('Yosh');
-// }
-
-// const checkAge = function (allPeople, userAge) {
-
-//     const checkPeople = allPeople.every((person) => person.age >= userAge);
-
-//     if (checkPeople) {
-//         return 'Katta bola'
+//     if (itemId.value) {
+//         item = JSON.parse(localStorage.getItem(itemId.value));
+//         item.name = nameInput.value
+//         item.price = price.value
 //     } else {
-//         return 'Yosh'
+//         item = {
+//             name: nameInput.value,
+//             price: price.value
+//         }
+//         itemId.value = `item ${Date.now()}`
 //     }
+
+//     localStorage.setItem(itemId.value, JSON.stringify(item));
+
+//     form.reset();
+//     itemId.value = '';
+//     renderList();
+
+// });
+
+// function renderList() {
+//     itemList.innerHTML = '';
+//     let totalPrice = 0;
+
+//     for (const key in localStorage) {
+//         if (localStorage.hasOwnProperty(key)) {
+
+//             const item = JSON.parse(localStorage.getItem(key));
+//             const li = document.createElement('li');
+
+//             li.innerHTML = `<span>${item.name}</span> <span>$${item.price}</span>`
+//             itemList.appendChild(li);
+
+//             const editBtn = document.createElement('button');
+//             editBtn.textContent = 'Edit';
+//             li.appendChild(editBtn);
+
+//             editBtn.addEventListener('click', () => {
+//                 nameInput.value = item.name;
+//                 price.value = item.price;
+//                 itemId.value = key;
+//             })
+//             const deleteBtn = document.createElement('button');
+//             deleteBtn.textContent = 'Delete';
+//             li.appendChild(deleteBtn);
+
+//             deleteBtn.addEventListener('click', () => {
+//                 localStorage.removeItem(key);
+//                 renderList();
+//             })
+//             totalPrice += Number(item.price);
+
+//         }
+
+//     }
+
+//     const totalItem = document.createElement('h4');
+//     totalItem.textContent = totalPrice;
+
+//     itemList.appendChild(totalItem);
 // }
 
-// console.log(checkAge(people, 30));
+// renderList();
 
-// const myAge = function (birthYear) {
-//     return 2023 - birthYear;
+// const myFragment = document.createDocumentFragment();
+// const box = document.querySelector('.box');
+
+// const myText1 = document.createElement('p');
+// myText1.textContent = 'My text 1';
+
+// const myText2 = document.createElement('p');
+// myText2.textContent = 'My text 2';
+
+// const myText3 = document.createElement('p');
+// myText3.textContent = 'My text 3';
+
+// myFragment.appendChild(myText1);
+// myFragment.appendChild(myText2);
+// myFragment.appendChild(myText3);
+
+// box.appendChild(myFragment);
+
+
+// console.log('Hello World');
+// alert('I am alert')
+// console.log('By World');
+
+
+// let pizza;
+
+// function pizzaOrder() {
+//     console.log('Order Pizza');
+
+//     setTimeout(() => {
+//         pizza = 'My pizza';
+//     }, 2000);
+
+//     console.log('Pizza was ordered');
 // }
-// console.log(myAge(2000));
+// pizzaOrder();
 
-// const sayHello = () => console.log('Hello World');
+// setTimeout(() => {
+//     console.log(`Eating ${pizza}`);
+// }, 2500);
 
+const myBox = document.querySelector('.box');
 
-// const btn = document.querySelector('.btn');
+fetch('https://restcountries.com/v3.1/all').then((response) => response.json()).then((data) => {
+    data.map((country) => {
+        const countryFlag = document.createElement('img');
+        countryFlag.src = `${country.flags.png}`;
+        countryFlag.alt = `${country.flags.alt}`;
 
-// btn.addEventListener('click', () => {
-//     console.log('Hello World');
-// });
+        myBox.appendChild(countryFlag);
 
+        const countryName = document.createElement('h2');
+        countryName.textContent = country.name.common;
 
-// const numbers = [1, 2, 3, 4, 5];
-
-// numbers.forEach((num, index, array) => {
-//     array[index] = num * 2;
-// });
-
-// console.log(numbers);
-
-// const newNumbers = numbers.map((number) => {
-//     return number * 2
-// });
+        myBox.appendChild(countryName);
 
 
-// console.log(newNumbers);
 
-// const numbers = [5, 8, 1, 2, 6, 7, 10];
+        console.log(country);
 
-// const names = ['David', 'Jack', 'Bob', 'Anhel'].sort();
-
-
-// console.log(names);
-
-const numbers = [-5, -1, 1, 1, 2, 5, -4, 3, 4, 5, 6, 7, 9, 8];
-
-const array = [1, 2, 3, 4, 5]
-
-// const newNumbers = numbers.filter((num) => num < 2);
-
-// console.log(newNumbers);
-
-
-// const totalNumber = array.reduce((acc, element) => {
-//     return acc + element
-// });
-
-// console.log(totalNumber);
-
-const cars = [
-    {
-        img: 'https://motor.ru/imgs/2022/03/03/10/5274800/6ddcf7e5e0a907893873e987c81ec9d1fedcc76e.jpg',
-        car: 'BMW',
-        status: 'new',
-        quantity: 8
-    },
-    {
-        img: 'https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/home/720x720_the-new-bmw-i7-xdriv.jpg.grp-transform/small/720x720_the-new-bmw-i7-xdriv.jpg',
-        car: 'BMW',
-        status: 'old',
-        quantity: 12
-    },
-    {
-        img: 'https://images.drive.com.au/driveau/image/upload/c_fill,h_675,w_1200/q_auto:eco/f_auto/v1/cms/uploads/ggutkfdonramc5akyims',
-        car: 'Mercedes Benz',
-        status: 'new',
-        quantity: 2
-    },
-    {
-        img: 'https://www.investing.com/academy/wp-content/uploads/2022/08/tesla-statistics.jpg',
-        car: 'Tesla',
-        status: 'new',
-        quantity: 15
-    },
-    {
-        img: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png',
-        car: 'Toyota',
-        status: 'old',
-        quantity: 19
-    }
-];
-
-const row = document.querySelector('.row');
-
-const newElements = cars.map((element) => {
-    return `
-     <div class="col-lg-4">
-     <div class="card" style="width: 18rem;">
-         <img src='${element.img}'
-             class="card-img-top" alt="BMW">
-         <div class="card-body">
-         <h2>${element.car}</h2>
-             <h5 class="card-title">Status: ${element.status}</h5>
-             <p>Quantity: ${element.quantity}</p>
-         </div>
-     </div>
- </div>
-     `
-})
-console.log(newElements.join(''));
-
-row.innerHTML = newElements.join('');
+    })
+}).catch((error) => console.log(error.message));
