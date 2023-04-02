@@ -13,6 +13,10 @@ body {
     animation: rotation 1s linear infinite;
 }
 
+.active {
+    background-color: black;
+    color: white;
+}
 
 @keyframes rotation {
     0% {
