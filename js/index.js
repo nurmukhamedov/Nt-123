@@ -1,145 +1,243 @@
-// const myBox = document.querySelector('.box');
+// const apiKey = 'c1ba5d7054ad4225561ffacb783be3c6';
+// const baseUrl = 'https://api.themoviedb.org/3/';
 
-// fetch('https://restcountries.com/v3.1/all').then((response) => response.json()).then((data) => {
-//     data.map((country) => {
-//         const countryFlag = document.createElement('img');
-//         countryFlag.src = `${country.flags.png}`;
-//         countryFlag.alt = `${country.flags.alt}`;
+// const imagesUrl = 'https://image.tmdb.org/t/p/w500';
 
-//         myBox.appendChild(countryFlag);
 
-//         const countryName = document.createElement('h2');
-//         countryName.textContent = country.name.common;
+// const fragment = document.createDocumentFragment();
 
-//         myBox.appendChild(countryName);
 
-//         if (country.currencies !== undefined && country.currencies !== null) {
-//             const currenciesInArray = Object.keys(country.currencies);
-//             const currencyText = document.createElement('span');
-//             currencyText.textContent = currenciesInArray[0];
-//             console.log(currenciesInArray[0]);
-//             myBox.appendChild(currencyText);
+// const loader_container = document.querySelector('.loader-container');
+// const loader = document.createElement('div');
+// loader.classList.add('loader');
+
+// loader_container.appendChild(loader);
+
+// let currentPage = 1;
+
+// async function getMovies() {
+//     const searchTerm = document.querySelector('#search').value;
+
+//     let url;
+
+//     if (searchTerm) {
+//         url = `${baseUrl}search/movie?api_key=${apiKey}&query=${searchTerm}`;
+//     } else {
+//         url = `${baseUrl}discover/movie?api_key=${apiKey}&page=${currentPage}`;
+//     }
+
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+
+//         let totalPages = data.total_pages > 5 ? 5 : data.total_pages;
+
+//         const movie_container = document.querySelector('.movie-container');
+//         movie_container.innerHTML = '';
+//         if (data.results.length === 0) {
+//             const message = document.querySelector('.not-found');
+//             message.textContent = 'Siz izlagan kino topilmadi'
+//         } else {
+//             data.results.map((movie) => {
+//                 const movieCard = document.createElement('div');
+//                 movieCard.classList.add('movie-card');
+
+//                 const movieImage = document.createElement('img');
+//                 movieImage.src = `${imagesUrl}${movie.backdrop_path}`;
+//                 movieImage.alt = movie.title;
+
+//                 const movieTitle = document.createElement('h3');
+//                 movieTitle.textContent = movie.title;
+
+//                 const movieRelease = document.createElement('span');
+//                 movieRelease.textContent = `Released: ${movie.release_date}`;
+
+
+//                 fragment.appendChild(movieImage);
+//                 fragment.appendChild(movieTitle);
+//                 fragment.appendChild(movieRelease);
+//                 movieCard.appendChild(fragment);
+//                 movie_container.appendChild(movieCard);
+//             })
+
+//             const paginationWrapper = document.querySelector('.pagination-wrapper');
+//             paginationWrapper.innerHTML = '';
+
+//             if (totalPages > 1) {
+
+//                 for (let i = 1; i <= totalPages; i++) {
+//                     const button = document.createElement('button');
+//                     button.innerText = i;
+//                     if (currentPage === i) {
+//                         button.classList.add('active');
+//                     }
+//                     button.addEventListener('click', () => {
+//                         currentPage = i;
+//                         getMovies();
+//                     })
+
+//                     paginationWrapper.appendChild(button);
+//                 }
+//             }
 //         }
-//     })
 
-// }).catch((error) => console.log(error.message));
-
-
-
-// let age = 23;
-// let age2 = age;
-
-// age2 = 40;
-// age = 30;
-
-// const info = {
-//     name: 'John',
-//     age: 30
+//     } catch (error) {
+//         console.error(error.message);
+//     } finally {
+//         const loader = document.querySelector('.loader');
+//         if (loader) {
+//             loader_container.remove();
+//         }
+//     }
 // }
 
-// const info2 = info;
+// const searchInput = document.querySelector('#search');
+// const btn = document.querySelector('#searchBtn');
 
-// console.log(info, info2);
+// searchInput.addEventListener('keypress', (e) => {
+//     if (e.key === 'Enter') {
+//         getMovies();
+//     }
+// });
+// btn.addEventListener('click', () => {
 
-// info2.age = 35;
+//     currentPage = 1;
+//     getMovies();
+// });
 
-// console.log(info);
-// console.log(info2);
+// getMovies();
 
 
-
-// const students101 = {
-//     name: 'Jack',
-//     age: 21
+// function myFunction() {
+//     console.log('Hello world');
 // }
 
+// const myTimeout = setTimeout(function () {
+//     console.log('Hello world');
+// }, 2000);
 
-// const newStudent = students101;
+// setTimeout(() => {
+//     clearTimeout(myTimeout);
+// }, 4000);
 
+// let i = 0;
 
-// newStudent.name = 'John';
-
-// console.log(newStudent);
-// console.log(students101);
-
-
-// const arr1 = ['Hello', 2, 'World', true];
-
-// const newArr = JSON.parse(JSON.stringify(arr1));
-
-// newArr[1] = 5;
-
-// console.log(arr1);
-
-// console.log(newArr);
-
-// newArr[1] = 5;
-
-// console.log(arr1);
-
-
-// function myInfo(a, b, c) {
-//     return `Hello I am ${this.name} I am ${this.age} years old ${a + b + c}`
+// function myFunction() {
+//     console.log(`Count ${i}`);
+//     i++;
 // }
+
+// const myInterval = setInterval(myFunction, 2000);
+
+// setTimeout(() => {
+//     clearInterval(myInterval);
+// }, 8000);
+
+// const arr = [1, 2, 3, 4, 5];
+
+// // const a = arr[0];
+// // const b = arr[1];
+// // const c = arr[2];
+
+// const [a, b, c, d] = arr;
+
+// console.log(a, b, c, d);
 
 // const obj = {
 //     name: 'John',
 //     age: 35
 // }
 
+// const { name, age } = obj;
+
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [6, 7, 8, 9, 10];
+
+// console.log(...arr1);
+
+// const arr3 = [...arr1, ...arr2]
+// console.log(arr3);
+
+
+// const obj1 = {
+//     x: 1,
+//     y: 2
+// }
 // const obj2 = {
-//     name: 'Jack',
-//     age: 36,
-// }
-// const laterCall = myInfo.bind(obj);
-
-
-// console.log(myInfo.call(obj));
-
-// console.log(myInfo.call(obj2, 1, 2, 3));
-// console.log(myInfo.apply(obj2, [1, 2, 3])); 
-
-const options = {
-    method: 'GET',
-    params: { q: 'Bitcoin', lang: 'en', sort_by: 'relevancy', page: '1' },
-    headers: {
-        'x-api-key': 'wvkXdkebSntH2YW9nTprZea7jG7xTCAg8i2bTsjuFvw'
-    },
-
-};
-
-fetch('https://api.newscatcherapi.com/v2/search?q=Business', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-
-// const person = {
-//     name: 'John',
-//     age: 23,
-//     id: 10
+//     z: 3,
+//     w: 4
 // }
 
-// fetch(url, {
-//     method: 'POST',
-//     headers: { 'Content-type': 'application/json' },
-//     body: JSON.stringify(person)
-// }).then((response) => response.json()).then((data) => console.log(data)).catch((error) => console.log(error));
+// const obj3 = { ...obj1, obj2 };
 
-// // fetch(url, {
-// //     method: 'Delete'
-// // })
+// console.log(obj3);
 
-// const objId = 1;
+// function sum(...args) {
+//     console.log(args);
+// }
 
-// fetch(`${url}/${objId}`, {
-//     method: 'PUT',
-//     headers: { 'Content-type': 'application/json' },
-//     body: JSON.stringify({
-//         name: 'Jack',
-//         age: 35,
-//         id: 15
-//     })
-// }).then((response) => response.json()).then((data) => console.log(data)).catch((error) => console.log(error))
+// sum(1, 2, 3, 4, 5)
+
+const obj = { x: 1, y: 2, z: 3, w: 4 };
+
+// const { x, ...hello } = obj;
+// console.log(x);
+// console.log(hello);
+
+// console.log(obj);
+
+// const objToArray = Object.values(obj);
+
+// console.log(objToArray);
+
+// const newArray = Object.entries(obj);
+
+// console.log(newArray);
 
 
+const url = 'https://restcountries.com/v3.1/all';
+
+const searchTermUrl = `https://restcountries.com/v3.1/name/${name}?fullText=true`;
+
+
+async function getCountries() {
+
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const countryWrapper = document.querySelector('.countries');
+        data.map((country) => {
+
+            const { flags, name, population, currencies } = country;
+            const currenciesInArray = Object.keys(currencies)[0];
+
+            const countryElement = document.createElement('div');
+            const flagElement = document.createElement('img');
+            const countryName = document.createElement('h3');
+            const populationElement = document.createElement('span');
+            const currencyElement = document.createElement('span');
+
+            flagElement.src = flags.png;
+            flagElement.alt = name.common;
+            countryName.innerText = name.common;
+            countryElement.appendChild(flagElement);
+            populationElement.innerText = population;
+            currencyElement.textContent = currenciesInArray;
+
+            countryElement.appendChild(countryName);
+            countryElement.appendChild(populationElement);
+            countryElement.appendChild(currencyElement);
+            countryWrapper.appendChild(countryElement);
+
+
+
+        })
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+getCountries();
 
