@@ -1,152 +1,150 @@
-// const myBox = document.querySelector('.box');
 
-// fetch('https://restcountries.com/v3.1/all').then((response) => response.json()).then((data) => {
-//     data.map((country) => {
-//         const countryFlag = document.createElement('img');
-//         countryFlag.src = ${country.flags.png};
-//         countryFlag.alt = ${country.flags.alt};
+// const url = 'https://reqres.in/api/users';
 
-//         myBox.appendChild(countryFlag);
+// const tableBody = document.getElementById('tbody');
+// const form = document.getElementById('add-user-form');
 
-//         const countryName = document.createElement('h2');
-//         countryName.textContent = country.name.common;
 
-//         myBox.appendChild(countryName);
+// fetch(url).then((response) => response.json()).then((data) => {
+//     data.data.map((user) => {
+//         const { id, email, first_name, last_name, avatar } = user;
 
-//         if (country.currencies !== undefined && country.currencies !== null) {
-//             const currenciesInArray = Object.keys(country.currencies);
-//             const currencyText = document.createElement('span');
-//             currencyText.textContent = currenciesInArray[0];
-//             console.log(currenciesInArray[0]);
-//             myBox.appendChild(currencyText);
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//              <td>${id}</td>
+//              <td>${first_name}</td>
+//              <td>${last_name}</td>
+//              <td>${email}</td>
+//              <td>
+//                 <button class='edit-button' data-id="${id}" data-name="${first_name}" data-lname="${last_name}" data-email="${email}">Edit</button>
+//              </td>
+//              <td>
+//                 <button class='delete-button' data-id=${id}>Delete</button>
+//              </td>
+//         `
+
+//         tableBody.appendChild(row);
+
+//     })
+// }).catch((error) => console.error(error));
+
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     const id = document.getElementById('update-id').value;
+//     const name = document.getElementById('name').value;
+//     const lname = document.getElementById('lName').value;
+//     const email = document.getElementById('email').value;
+
+
+//     if (id) {
+//         updateUser(id, name, lname, email);
+//         form.reset()
+//     } else {
+//         const formData = {
+//             name: name,
+//             lname: lname,
+//             email: email
 //         }
-//     })
 
-// }).catch((error) => console.log(error.message));
+//         fetch(url, {
+//             method: 'POST',
+//             headers: { 'Content-type': 'application/json' },
+//             body: JSON.stringify(formData)
+//         }).then((response) => response.json()).then((data) => {
+//             const row = document.createElement('tr');
+//             row.innerHTML = `
+//                <td>${data.id}</td>
+//                <td>${data.name}</td>
+//                <td>${data.lname}</td>
+//                <td>${data.email}</td>
+//                <td>
+//                     <button class='edit-button' data-id="${data.id}" data-name="${data.name}" data-lname="${data.lname}" data-email="${data.email}">Edit</button>
+//                  </td>
+//                  <td>
+//                     <button class='delete-button' data-id="${data.id}">Delete</button>
+//                  </td>
+//             `
+//             tableBody.appendChild(row);
+
+//             form.reset();
+//         }).catch((error) => console.log(error));
+//     }
+// });
 
 
+// tableBody.addEventListener('click', (e) => {
 
-// let age = 23;
-// let age2 = age;
+//     if (e.target.classList.contains('edit-button')) {
 
-// age2 = 40;
-// age = 30;
+//         const id = e.target.dataset.id;
+//         const name = e.target.dataset.name;
+//         const lname = e.target.dataset.lname;
+//         const email = e.target.dataset.email;
 
-// const info = {
-//     name: 'John',
-//     age: 30
+//         document.querySelector('#update-id').value = id;
+//         document.querySelector('#name').value = name;
+//         document.querySelector('#lName').value = lname;
+//         document.querySelector('#email').value = email;
+//         document.querySelector('#save-user-button').textContent = 'Update User';
+
+//     }
+
+
+//     if (e.target.classList.contains('delete-button')) {
+//         const id = e.target.dataset.id;
+
+//         deleteUser(id).then(() => {
+//             const tableRow = e.target.closest("tr");
+//             tableRow.remove();
+//         }).catch((error) => console.error(error))
+//     }
+
+// })
+
+// async function deleteUser(id) {
+//     try {
+//         const response = await fetch(`${url}/${id}`, {
+//             method: 'Delete'
+//         });
+//         if (response.ok) {
+//             return response;
+//         }
+//     } catch (error) {
+//         return console.error(error);
+//     }
 // }
 
-// const info2 = info;
+// async function updateUser(id, name, lname, email) {
+//     const formatData = new FormData();
+//     formatData.append("name", name);
+//     formatData.append("lname", lname);
+//     formatData.append("email", email);
 
-// console.log(info, info2);
+//     try {
 
-// info2.age = 35;
+//         const response = await fetch(`${url}/${id}`, {
+//             method: 'PUT',
+//             body: formatData
+//         });
 
-// console.log(info);
-// console.log(info2);
+//         const data = await response.json();
+//         const tableRows = document.querySelectorAll('#tbody tr');
+//         console.log(tableRows);
+//         for (row of tableRows) {
+//             if (row.children[0].textContent == id.toString()) {
+//                 row.children[1].textContent = name;
+//                 row.children[2].textContent = lname;
+//                 row.children[3].textContent = email;
+//             }
+//         }
+//         document.querySelector('#save-user-button').textContent = 'Save';
+//         return data;
 
+//     } catch (error) {
 
-
-// const students101 = {
-//     name: 'Jack',
-//     age: 21
+//     }
 // }
 
+import myFun from './allFunctions.js';
 
-// const newStudent = students101;
-
-
-// newStudent.name = 'John';
-
-// console.log(newStudent);
-// console.log(students101);
-
-
-// const arr1 = ['Hello', 2, 'World', true];
-
-// const newArr = JSON.parse(JSON.stringify(arr1));
-
-// newArr[1] = 5;
-
-// console.log(arr1);
-
-// console.log(newArr);
-
-// newArr[1] = 5;
-
-// console.log(arr1);
-
-
-// function myInfo(a, b, c) {
-//     return Hello I am ${this.name} I am ${this.age} years old ${a + b + c}
-// }
-
-// const obj = {
-//     name: 'John',
-//     age: 35
-// }
-
-// const obj2 = {
-//     name: 'Jack',
-//     age: 36,
-// }
-// const laterCall = myInfo.bind(obj);
-
-
-// console.log(myInfo.call(obj));
-
-// console.log(myInfo.call(obj2, 1, 2, 3));
-// console.log(myInfo.apply(obj2, [1, 2, 3]));
-
-const myKey = 'wvkXdkebSntH2YW9nTprZea7jG7xTCAg8i2bTsjuFvw'
-const url = 'https://api.newscatcherapi.com/v2/search?q=Tesla';
-
-
-fetch(url).then((response) => response.json()).then((data) => console.log(data)).catch((error) => console.log(error));
-
-// const person = {
-//     name: 'John',
-//     age: 23,
-//     id: 10
-// }
-
-// fetch(url, {
-//     method: 'POST',
-//     headers: { 'Content-type': 'application/json' },
-//     body: JSON.stringify(person)
-// }).then((response) => response.json()).then((data) => console.log(data)).catch((error) => console.log(error));
-
-// // fetch(url, {
-// //     method: 'Delete'
-// // })
-
-// const objId = 1;
-
-// fetch(${url}/${objId}, {
-//     method: 'PUT',
-//     headers: { 'Content-type': 'application/json' },
-//     body: JSON.stringify({
-//         name: 'Jack',
-//         age: 35,
-//         id: 15
-//     })
-// }).then((response) => response.json()).then((data) => console.log(data)).catch((error) => console.log(error))
-
-
-
-// exam api call structure
-
-// const options = {
-//     method: 'GET',
-//     params: { q: 'Bitcoin', lang: 'en', sort_by: 'relevancy', page: '1' },
-//     headers: {
-//         'x-api-key': 'wvkXdkebSntH2YW9nTprZea7jG7xTCAg8i2bTsjuFvw'
-//     },
-
-// };
-
-// fetch('https://api.newscatcherapi.com/v2/search?q=Business', options)
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));
+console.log(myFun());
