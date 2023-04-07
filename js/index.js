@@ -1,6 +1,9 @@
 
 // const url = 'https://reqres.in/api/users';
 
+
+
+
 // const tableBody = document.getElementById('tbody');
 // const form = document.getElementById('add-user-form');
 
@@ -15,6 +18,7 @@
 //              <td>${first_name}</td>
 //              <td>${last_name}</td>
 //              <td>${email}</td>
+//              <td> <img src="${avatar}" alt="${first_name}"/> </td>
 //              <td>
 //                 <button class='edit-button' data-id="${id}" data-name="${first_name}" data-lname="${last_name}" data-email="${email}">Edit</button>
 //              </td>
@@ -34,41 +38,53 @@
 //     const name = document.getElementById('name').value;
 //     const lname = document.getElementById('lName').value;
 //     const email = document.getElementById('email').value;
+//     const avatar = document.getElementById('avatar').files[0];
+
+//     const read = new FileReader();
+//     read.readAsDataURL(avatar);
 
 
-//     if (id) {
-//         updateUser(id, name, lname, email);
-//         form.reset()
-//     } else {
-//         const formData = {
-//             name: name,
-//             lname: lname,
-//             email: email
+//     read.onload = () => {
+//         const avatarUrl = read.result;
+
+//         if (id) {
+//             updateUser(id, name, lname, email);
+//             form.reset()
+//         } else {
+//             const formData = {
+//                 name: name,
+//                 lname: lname,
+//                 email: email
+//             }
+
+//             fetch(url, {
+//                 method: 'POST',
+//                 headers: { 'Content-type': 'application/json' },
+//                 body: JSON.stringify(formData)
+//             }).then((response) => response.json()).then((data) => {
+//                 const row = document.createElement('tr');
+//                 row.innerHTML = `
+//                    <td>${data.id}</td>
+//                    <td>${data.name}</td>
+//                    <td>${data.lname}</td>
+//                    <td>${data.email}</td>
+//                    <td> <img src= "${avatarUrl}"/> </td>
+//                    <td>
+//                         <button class='edit-button' data-id="${data.id}" data-name="${data.name}" data-lname="${data.lname}" data-email="${data.email}">Edit</button>
+//                      </td>
+//                      <td>
+//                         <button class='delete-button' data-id="${data.id}">Delete</button>
+//                      </td>
+//                 `
+//                 tableBody.appendChild(row);
+
+//                 form.reset();
+//             }).catch((error) => console.log(error));
 //         }
-
-//         fetch(url, {
-//             method: 'POST',
-//             headers: { 'Content-type': 'application/json' },
-//             body: JSON.stringify(formData)
-//         }).then((response) => response.json()).then((data) => {
-//             const row = document.createElement('tr');
-//             row.innerHTML = `
-//                <td>${data.id}</td>
-//                <td>${data.name}</td>
-//                <td>${data.lname}</td>
-//                <td>${data.email}</td>
-//                <td>
-//                     <button class='edit-button' data-id="${data.id}" data-name="${data.name}" data-lname="${data.lname}" data-email="${data.email}">Edit</button>
-//                  </td>
-//                  <td>
-//                     <button class='delete-button' data-id="${data.id}">Delete</button>
-//                  </td>
-//             `
-//             tableBody.appendChild(row);
-
-//             form.reset();
-//         }).catch((error) => console.log(error));
 //     }
+
+
+
 // });
 
 
@@ -145,6 +161,56 @@
 //     }
 // }
 
-import myFun from './allFunctions.js';
 
-console.log(myFun());
+const getData = (url) => {
+
+    return new Promise((resolve, reject) => {
+
+        fetch(url).then((response) => {
+
+            if (response.status === 200) {
+                response.json();
+            } else {
+                Error('Response kelmadi')
+            }
+        }).then((data) => resolve(data)).catch((error) => reject(error));
+
+    })
+}
+
+
+getData('https://jsonplaceholder.typicode.com/posts').then((data) => {
+    console.log(data);
+}).catch((error) => console.error(error))
+
+getData('https://reqres.in/api/users').then((data) => {
+    console.log(data);
+})
+
+
+
+function getDat2(url) {
+    return new Promise((resolve, reject) => {
+        let data = new XMLHttpRequest();
+        data.open('GET', url);
+        data.onload = function () {
+            if (data.status === 200) {
+                resolve(data)
+            } else {
+                reject(Error('Data kelmadi'))
+            }
+        }
+        data.onerror = function () {
+            reject(Error('Data kelmadi'))
+        }
+
+        data.send();
+    })
+}
+getDat2('https://jsonplaceholder.typicode.com/posts').then((response) => {
+    console.log(JSON.parse(response.responseText));
+})
+
+
+
+fetch('https://jsonplaceholder.typicode.com/posts').then((response) => console.log(response))
